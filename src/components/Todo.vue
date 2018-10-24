@@ -1,8 +1,8 @@
 <template>
   <el-card class="box-card" shadow="always">
     {{todo.text}}
-    <i @click="toggleTodoDone(index)" class="el-icon-check"/>
-    <i @click="deleteTodo(index)" class="el-icon-close"/>
+    <i @click="toggleTodoDone(index)" class="el-icon-check" v-bind:class="{ done: todo.done }"/>
+    <i @click="deleteTodo(index)" class="el-icon-close delete"/>
   </el-card>
 </template>
 
@@ -14,12 +14,11 @@ export default class Todo extends Vue {
   @Prop() private todo!;
   @Prop() private index!;
 
-  deleteTodo(index) {
+  deleteTodo(index): void {
     this.$store.commit('deleteTodo', index);
   };
 
-  toggleTodoDone(index) {
-    // Insert the code that change the color of the check icon
+  toggleTodoDone(index): void {
     this.$store.commit('toggleTodoDone', index);
   };
 }
@@ -46,5 +45,13 @@ export default class Todo extends Vue {
 .box-card {
   width: 300px;
   height: 80px;
+}
+
+.done {
+  color: yellow;
+}
+
+.delete {
+  color: red;
 }
 </style>
