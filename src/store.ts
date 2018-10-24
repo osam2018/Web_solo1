@@ -8,7 +8,10 @@ export default new Vuex.Store({
     todos: [],
   },
   mutations: {
-    toggleTodoDone(state, index: number) {
+    addTodo(state, todo): void {
+      state.todos.push(todo);
+    },
+    toggleTodoDone(state, index: number): void {
       state.todos[index].done = !state.todos[index].done;
     },
   },
