@@ -1,17 +1,15 @@
 <template>
-  <div class="home">
-    <CardView/>
-  </div>
+  <TodoList/>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import CardView from '@/components/CardView.vue';
+import TodoList from '@/components/TodoList.vue';
 
 @Component({
   components: {
-    CardView,
+    TodoList,
   },
 })
 
