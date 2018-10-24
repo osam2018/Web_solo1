@@ -1,36 +1,35 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <el-container>
+     <Aside/>
+     <Main/>
+  </el-container>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Aside from '@/components/Aside.vue';
+import Main from '@/components/Main.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
-}
+    Aside,
+    Main,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@charset "utf-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin:0; padding:0 }
+body, input, textarea, select, button, table { font-size:14px; line-height:1.25em; font-family:'나눔고딕', NanumGothic, Helvetica, AppleGothic, Sans-serif, ngwoff, ngeot, '굴림', gulrem; }
+html, body { height: 100%; padding:0; margin:0; }
+img, fieldset { border:0 }
+ul, ol { list-style:none }
+em, address { font-style:normal }
+a { text-decoration:none }
+a:hover, a:active, a:focus { text-decoration:underline }
+
+.el-container {
+   height: 100%;
 }
 </style>
