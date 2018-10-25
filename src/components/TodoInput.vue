@@ -17,10 +17,11 @@ export default class TodoInput extends Vue {
   private text!: string;
   private done!: boolean;
 
-  addTodo(text: string, done: boolean = false): void {
+  addTodo(text: string, done: boolean = false, starred: boolean = false): void {
     const todo = {
       text: text,
       done: done,
+      starred: starred,
     };
 
     this.$store.commit('addTodo', todo)
