@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col v-for="(todo, index) in getTodos()" :span="6">
+    <el-col v-for="(todo, index) in todos()" :span="6">
       <Todo :todo="todo" :index="index"/>
     </el-col>
   </el-row>
@@ -18,10 +18,14 @@ import Todo from '@/components/Todo.vue';
 })
 
 export default class TodoList extends Vue {
-  private todos = this.$store.state.todos;
+  todos() {
+    let todoState = this.$store.state.todoState;
 
-  getTodos() {
-    if (this.$store.state.todoState == 'done') {
+    if(todoState == 'starred') {
+      return this.$store.getters.starredTodos;
+    }
+
+    if (todoState == 'done') {
       return this.$store.getters.doneTodos;
     }
 

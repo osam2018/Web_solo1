@@ -4,7 +4,7 @@
       <el-menu
         default-active="1"
         class="el-menu-vertical-demo">
-        <el-menu-item index="1">
+        <el-menu-item index="1" @click="changeTodoState('starred')">
           <i class="el-icon-star-on"></i>
           <span>중요한 일</span>
         </el-menu-item>

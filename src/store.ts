@@ -12,6 +12,9 @@ export default new Vuex.Store({
     doneTodos: state => {
       return state.todos.filter(todo => todo.done);
     },
+    starredTodos: state => {
+      return state.todos.filter(todo => todo.starred);
+    },
   },
   mutations: {
     addTodo(state, todo): void {
@@ -22,7 +25,9 @@ export default new Vuex.Store({
     },
     toggleTodoDone(state, index: number): void {
       state.todos[index].done = !state.todos[index].done;
-      console.log(state.todos[index].done);
+    },
+    toggleTodoStarred(state, index: number): void {
+      state.todos[index].starred = !state.todos[index].starred;
     },
     changeTodoState(state, todoState: string = 'default'): void {
       state.todoState = todoState;

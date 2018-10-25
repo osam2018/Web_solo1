@@ -1,6 +1,7 @@
 <template>
   <el-card class="box-card" shadow="always">
     {{todo.text}}
+    <i @click="toggleTodoStarred(index)" class="el-icon-star-on" v-bind:class="{ starred: todo.starred }"/>
     <i @click="toggleTodoDone(index)" class="el-icon-check" v-bind:class="{ done: todo.done }"/>
     <i @click="deleteTodo(index)" class="el-icon-close delete"/>
   </el-card>
@@ -20,6 +21,10 @@ export default class Todo extends Vue {
 
   toggleTodoDone(index): void {
     this.$store.commit('toggleTodoDone', index);
+  };
+
+  toggleTodoStarred(index): void {
+    this.$store.commit('toggleTodoStarred', index);
   };
 }
 </script>
@@ -48,7 +53,11 @@ export default class Todo extends Vue {
 }
 
 .done {
-  color: yellow;
+  color: #67C23A;
+}
+
+.starred {
+  color: #FF9900;
 }
 
 .delete {
