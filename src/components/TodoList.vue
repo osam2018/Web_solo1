@@ -21,6 +21,10 @@ export default class TodoList extends Vue {
   todos() {
     let todoState = this.$store.state.todoState;
 
+    if (todoState == 'default') {
+      return this.$store.state.todos;
+    }
+
     if(todoState == 'starred') {
       return this.$store.getters.starredTodos;
     }
@@ -29,7 +33,9 @@ export default class TodoList extends Vue {
       return this.$store.getters.doneTodos;
     }
 
-    return this.$store.state.todos;
+    if (todoState == 'notDone') {
+      return this.$store.getters.notDoneTodos;
+    }
   };
 }
 </script>

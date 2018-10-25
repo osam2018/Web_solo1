@@ -15,6 +15,10 @@ export default new Vuex.Store({
     starredTodos: state => {
       return state.todos.filter(todo => todo.starred);
     },
+    notDoneTodos: state => {
+      console.log(state.todos.filter(todo => todo.done != true));
+      return state.todos.filter(todo => todo.done != true);
+    },
   },
   mutations: {
     addTodo(state, todo): void {
@@ -33,9 +37,5 @@ export default new Vuex.Store({
       state.todoState = todoState;
     },
   },
-  actions: {
-    selectDoneTodo({commit, getters}) {
-      commit('ttt', getters.doneTodos);
-    },
-  },
+  actions: {},
 });

@@ -4,15 +4,19 @@
       <el-menu
         default-active="1"
         class="el-menu-vertical-demo">
-        <el-menu-item index="1" @click="changeTodoState('starred')">
+        <el-menu-item index="1" @click="changeTodoState('default')">
+          <i class="el-icon-menu"></i>
+          <span>모든 일</span>
+        </el-menu-item>
+        <el-menu-item index="2" @click="changeTodoState('starred')">
           <i class="el-icon-star-on"></i>
           <span>중요한 일</span>
         </el-menu-item>
-        <el-menu-item index="2">
+        <el-menu-item index="3" @click="changeTodoState('notDone')">
           <i class="el-icon-menu"></i>
           <span>할 일</span>
         </el-menu-item>
-        <el-menu-item index="3" @click="changeTodoState('done')">
+        <el-menu-item index="4" @click="changeTodoState('done')">
           <i class="el-icon-check"></i>
           <span>완료한 일</span>
         </el-menu-item>
