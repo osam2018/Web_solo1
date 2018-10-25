@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span="20">
-      <el-input v-model="text"/>
+      <el-input v-model="text" @keydown.enter.native="addTodo(text)"/>
     </el-col>
     <el-col center :span="4">
       <el-button @click="addTodo(text)">추가하기</el-button>
