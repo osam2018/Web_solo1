@@ -12,7 +12,7 @@
           <i class="el-icon-menu"></i>
           <span>할 일</span>
         </el-menu-item>
-        <el-menu-item index="3">
+        <el-menu-item index="3" @click="changeTodoState('done')">
           <i class="el-icon-check"></i>
           <span>완료한 일</span>
         </el-menu-item>
@@ -26,6 +26,9 @@ import {Component, Vue} from 'vue-property-decorator';
 
 @Component
 export default class Aside extends Vue {
+  changeTodoState(state: string): void {
+    this.$store.commit('changeTodoState', state);
+  };
 }
 </script>
 

@@ -6,6 +6,12 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     todos: [],
+    todoState:  'default',
+  },
+  getters: {
+    doneTodos: state => {
+      return state.todos.filter(todo => todo.done);
+    },
   },
   mutations: {
     addTodo(state, todo): void {
@@ -16,7 +22,15 @@ export default new Vuex.Store({
     },
     toggleTodoDone(state, index: number): void {
       state.todos[index].done = !state.todos[index].done;
+      console.log(state.todos[index].done);
+    },
+    changeTodoState(state, todoState: string = 'default'): void {
+      state.todoState = todoState;
     },
   },
-  actions: {},
+  actions: {
+    selectDoneTodo({commit, getters}) {
+      commit('ttt', getters.doneTodos);
+    },
+  },
 });
