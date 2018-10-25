@@ -30,9 +30,9 @@ import {Component, Vue} from 'vue-property-decorator';
 
 @Component
 export default class Aside extends Vue {
-  changeTodoState(state: string): void {
+  private changeTodoState(state: string): void {
     this.$store.commit('changeTodoState', state);
-  };
+  }
 }
 </script>
 

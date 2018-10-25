@@ -18,24 +18,24 @@ import Todo from '@/components/Todo.vue';
 })
 
 export default class TodoList extends Vue {
-  todos() {
-    let todoState = this.$store.state.todoState;
+  private todos() {
+    const todoState: string = this.$store.state.todoState;
 
-    if (todoState == 'default') {
+    if (todoState === 'default') {
       return this.$store.state.todos;
     }
 
-    if(todoState == 'starred') {
+    if (todoState === 'starred') {
       return this.$store.getters.starredTodos;
     }
 
-    if (todoState == 'done') {
+    if (todoState === 'done') {
       return this.$store.getters.doneTodos;
     }
 
-    if (todoState == 'notDone') {
+    if (todoState === 'notDone') {
       return this.$store.getters.notDoneTodos;
     }
-  };
+  }
 }
 </script>

@@ -10,22 +10,24 @@
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
 
+import { Todo as TodoInterface } from '@/interfaces/todo.interface';
+
 @Component
 export default class Todo extends Vue {
-  @Prop() private todo!;
-  @Prop() private index!;
+  @Prop() private todo!: TodoInterface;
+  @Prop() private index!: number;
 
-  deleteTodo(index): void {
+  private deleteTodo(index: number): void {
     this.$store.commit('deleteTodo', index);
-  };
+  }
 
-  toggleTodoDone(index): void {
+  private toggleTodoDone(index: number): void {
     this.$store.commit('toggleTodoDone', index);
-  };
+  }
 
-  toggleTodoStarred(index): void {
+  private toggleTodoStarred(index: number): void {
     this.$store.commit('toggleTodoStarred', index);
-  };
+  }
 }
 </script>
 

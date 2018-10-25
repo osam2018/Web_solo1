@@ -1,30 +1,31 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import { Todo as TodoInterface } from '@/interfaces/todo.interface';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    todos: [],
-    todoState:  'default',
+    todos: [] as TodoInterface[],
+    todoState: 'default' as string,
   },
   getters: {
-    doneTodos: state => {
-      return state.todos.filter(todo => todo.done);
+    doneTodos: (state): TodoInterface[] => {
+      return state.todos.filter((todo) => todo.done);
     },
-    starredTodos: state => {
-      return state.todos.filter(todo => todo.starred);
+    starredTodos: (state): TodoInterface[] => {
+      return state.todos.filter((todo) => todo.starred);
     },
-    notDoneTodos: state => {
-      console.log(state.todos.filter(todo => todo.done != true));
-      return state.todos.filter(todo => todo.done != true);
+    notDoneTodos: (state): TodoInterface[] => {
+      return state.todos.filter((todo) => todo.done !== true);
     },
   },
   mutations: {
-    addTodo(state, todo): void {
+    addTodo(state, todo: TodoInterface): void {
       state.todos.push(todo);
     },
-    deleteTodo(state, index): void {
+    deleteTodo(state, index: number): void {
       state.todos.splice(index, 1);
     },
     toggleTodoDone(state, index: number): void {
