@@ -16,15 +16,30 @@ import {Todo as TodoInterface} from '@/interfaces/todo.interface';
 
 @Component
 export default class TodoInput extends Vue {
-  private text!: string;
-  private done!: boolean;
+  private text!: string = '';
+  private done!: boolean = false;
+
+  private issueId(): number {
+    let id: number = 0;
+    const todosLength: number = this.$store.state.todos.length;
+
+    if (todosLength !== 0) {
+      id = this.$store.state.todos[todosLength  - 1].id + 1;
+    }
+
+    return id;
+  }
 
   private addTodo(text: string, done: boolean = false, starred: boolean = false): void {
+    const id = this.issueId();
+
     const todo: TodoInterface = {
-      text, done, starred,
+      id, text, done, starred,
     };
 
     this.$store.commit('addTodo', todo);
+
+    this.text = '';
   }
 }
 </script>

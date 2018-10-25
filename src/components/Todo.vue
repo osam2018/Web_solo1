@@ -1,14 +1,20 @@
 <template>
   <el-card class="box-card" shadow="always">
-    {{todo.text}}
-    <i @click="toggleTodoStarred(index)" class="el-icon-star-on" v-bind:class="{ starred: todo.starred }"/>
-    <i @click="toggleTodoDone(index)" class="el-icon-check" v-bind:class="{ done: todo.done }"/>
-    <i @click="deleteTodo(index)" class="el-icon-close delete"/>
+    <el-row class="todo">
+      <el-col :span="20">
+        {{todo.text}}
+      </el-col>
+      <el-col :span="4">
+        <i @click="toggleTodoDone(todo.id)" class="el-icon-check icon" v-bind:class="{ done: todo.done }"/>
+        <i @click="toggleTodoStarred(todo.id)" class="el-icon-star-on icon" v-bind:class="{ starred: todo.starred }"/>
+        <i @click="deleteTodo(todo.id)" class="el-icon-close delete"/>
+      </el-col>
+    </el-row>
   </el-card>
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import { Todo as TodoInterface } from '@/interfaces/todo.interface';
 
@@ -17,16 +23,16 @@ export default class Todo extends Vue {
   @Prop() private todo!: TodoInterface;
   @Prop() private index!: number;
 
-  private deleteTodo(index: number): void {
-    this.$store.commit('deleteTodo', index);
+  private deleteTodo(id: number): void {
+    this.$store.commit('deleteTodo', id);
   }
 
-  private toggleTodoDone(index: number): void {
-    this.$store.commit('toggleTodoDone', index);
+  private toggleTodoDone(id: number): void {
+    this.$store.commit('toggleTodoDone', id);
   }
 
-  private toggleTodoStarred(index: number): void {
-    this.$store.commit('toggleTodoStarred', index);
+  private toggleTodoStarred(id: number): void {
+    this.$store.commit('toggleTodoStarred', id);
   }
 }
 </script>
@@ -52,6 +58,10 @@ export default class Todo extends Vue {
 .box-card {
   width: 300px;
   height: 80px;
+}
+
+.todo {
+  margin: 10px auto;
 }
 
 .done {

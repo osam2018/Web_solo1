@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col v-for="(todo, index) in todos()" :span="6">
+    <el-col v-for="(todo, index) in todos()" :key="todo.id" :span="6">
       <Todo :todo="todo" :index="index"/>
     </el-col>
   </el-row>

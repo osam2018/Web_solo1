@@ -11,6 +11,9 @@ export default new Vuex.Store({
     todoState: 'default' as string,
   },
   getters: {
+    getTodoById: (state) => (id: number) => {
+      return state.todos.filter((todo) => todo.id === id);
+    },
     doneTodos: (state): TodoInterface[] => {
       return state.todos.filter((todo) => todo.done);
     },
@@ -25,14 +28,26 @@ export default new Vuex.Store({
     addTodo(state, todo: TodoInterface): void {
       state.todos.push(todo);
     },
-    deleteTodo(state, index: number): void {
-      state.todos.splice(index, 1);
+    deleteTodo(state, id): void {
+      state.todos.forEach((todo, index) => {
+        if (todo.id === id) {
+          state.todos.splice(index, 1);
+        }
+      });
     },
-    toggleTodoDone(state, index: number): void {
-      state.todos[index].done = !state.todos[index].done;
+    toggleTodoDone(state, id: number): void {
+      state.todos.forEach((todo, index) => {
+        if (todo.id === id) {
+          state.todos[index].done = !state.todos[index].done;
+        }
+      });
     },
-    toggleTodoStarred(state, index: number): void {
-      state.todos[index].starred = !state.todos[index].starred;
+    toggleTodoStarred(state, id: number): void {
+      state.todos.forEach((todo, index) => {
+        if (todo.id === id) {
+          state.todos[index].starred = !state.todos[index].starred;
+        }
+      });
     },
     changeTodoState(state, todoState: string = 'default'): void {
       state.todoState = todoState;
