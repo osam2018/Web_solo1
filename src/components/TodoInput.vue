@@ -31,6 +31,11 @@ export default class TodoInput extends Vue {
   }
 
   private addTodo(text: string, done: boolean = false, starred: boolean = false): void {
+    if (text === '') {
+      this.$message.error('내용을 입력하시기 바랍니다.');
+      return;
+    }
+
     const id = this.issueId();
 
     const todo: TodoInterface = {
